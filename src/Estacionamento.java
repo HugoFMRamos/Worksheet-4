@@ -1,5 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 
 public class Estacionamento {
     /**
@@ -9,11 +10,11 @@ public class Estacionamento {
     /**
      * Entry time in string format
      */
-    private String entryTime;
+    private Date entryTime;
     /**
      * Exit time in string format
      */
-    private String exitTime;
+    private Date exitTime;
     /**
      * Price for each 15 minutes of parking
      */
@@ -49,17 +50,11 @@ public class Estacionamento {
      * @param entryTime
      * @param exitTime
      */
-        public void calculatePayment(String entryTime, String exitTime) {
-        /**
-         * Convert entry and exit times from strings to integers
-         */
-        int entry = Integer.parseInt(entryTime);
-        int exit = Integer.parseInt(exitTime);
-
+        public void calculatePayment(Date entryTime, Date exitTime) {
         /**
          * Calculate time difference in minutes
          */
-        int parkingTime = exit - entry;
+        long parkingTime = (exitTime.getTime() - entryTime.getTime());
 
         /**
          * Calculate the amount to be paid based on parking time
